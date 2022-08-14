@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extend_head %}
+
+{% endblock %}
+
+{% block content %}
+    <h1 class="h3 mb-4 text-gray-800" style="text-align:center"><strong>PLEASE CHOOSE A BRIDGE</strong></h1>
+
+    <div class="list-group">
+        <a href="{% url 'data:temp' %}" class="list-group-item list-group-item-action" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Academic Bridge (UDSM)</h5>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action disabled " aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Mfugale Bridge</h5>
+            </div>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action disabled" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Tanzanite Bridge</h5> 
+            </div>
+        </a>   
+        </a>
+        <a href="#" class="list-group-item list-group-item-action disabled" aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Kigamboni bridge</h5> 
+            </div>
+        </a>   
+        <a href="#" class="list-group-item list-group-item-action disabled " aria-current="true">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">Kongowe Bridge</h5> 
+            </div>
+        </a> 
+    </div>
+{% endblock content %}
+
+
+{% block extend_footer %}
+
+{% endblock %}

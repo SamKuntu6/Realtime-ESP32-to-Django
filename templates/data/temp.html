@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extend_head %}
+
+{% endblock %}
+
+{% block content %}
+
+    <h3 style = "color:black;text-align:center;">Temperature levels</h3>
+
+    <div style="max-width: 900px; max-height: 400px; text-align:center;">
+        <canvas id="myChart" width="900" height="400"></canvas>
+    </div>
+
+{% endblock content %}
+
+
+{% block extend_footer %}
+<!-- Custom JavaScripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.js"></script>
+
+<script>
+    socket = new WebSocket('ws://localhost:8000/ws/polData/');
+
+    var websocketList = [];
+
+    socket.onopen= function(e){
+    alert('connection established');
+    };
+
+    socket.onmessage = function(e){
+    console.log(e.data);
+    //document.getElementById("demo").innerHTML = "Temperature:" + e.data;
+    var recData=JSON.parse(e.data);
+    dataObjNew=dataObj['data']['datasets'][0]['data'];
+    dataObjNew.shift();
+    dataObjNew.push(recData.value["temp"]);
+    dataObj['data']['datasets'][0]['data']=dataObjNew;
+    window.myLine.update();
+
+    };
+
+
+    socket.onclose = function(e){
+    alert('connection closed');
+    };
+</script>
+
+<script>
+    var dataObj={
+      type: 'line',
+      data: {
+          labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+          datasets: [{
+              label: 'Real time data',
+              data: [12, 19, 3, 5, 2, 3, 4, 5, 6, 2, 9, 2, 6, 3, 5],
+              borderColor: "midnightblue",
+              fill: false
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  }
+  var ctx = document.getElementById('myChart').getContext('2d');
+  window.myLine = new Chart(ctx,dataObj );
+</script>
+{% endblock %}
