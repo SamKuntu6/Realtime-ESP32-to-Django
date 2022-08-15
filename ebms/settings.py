@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-wg439z!jp+-&=hz&wh&f39ro3+w@nw^!tz%l!^3-_am6l1+wx(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ebmms.com', 'www.ebmms.com', '178.79.189.246']
 
 
 # Application definition
@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'ebms.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'realtimedb',
+        'USER': 'admin',
+        'PASSWORD': 'realtimeadmin',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -121,6 +125,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
