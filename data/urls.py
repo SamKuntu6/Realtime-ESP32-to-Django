@@ -5,9 +5,9 @@ from . import views
 app_name = 'data'
 
 urlpatterns = [
-    path('',views.get_strain_data, name='home'),
-    path('home/', views.home_page, name='homepage'),
+    path('updatedata/<str:value>/',views.get_strain_data, name='api_data'),
+    path('strain/', views.strain_page, name='strain_page'),
     path('index/', views.index_page, name='indexpage'),
     path('error/', views.err, name='error'),
-    path('temp/',  views.temperature_view, name='temp')
+    path('displacement/',  views.displacement_view, name='displacement_data')
 ]

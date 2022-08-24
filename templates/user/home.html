@@ -1,0 +1,32 @@
+{% extends 'main1.html' %}
+{% load static %}
+
+{% block extend_head %}
+
+{% endblock %}
+
+{% block content %}
+
+    <h1 style ="color:black;text-align:center;">Login
+        <a href="{% url 'user:login' %}" class="btn btn-primary centre block">
+            Here
+        </a>
+    
+    </h1>
+    
+
+    <br>
+
+    <h3 style = "color:darkcyan;text-align:center;">WELCOME NOTE</h3>
+
+    <p> Welcome to this Physical Parameters Assessment Dashboard Manager for Bridges, where we find all the necessary 
+        information to help monitor and examine the condition states of the specific bridge under study so 
+        as to avoid any indication / posibilities of significant problems to its users despite their remote 
+        location in Tanzania.</p>
+
+{% endblock content %}
+
+
+{% block extend_footer %}
+
+{% endblock %}
