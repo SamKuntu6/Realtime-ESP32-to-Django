@@ -21,7 +21,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.js"></script>
 
 <script>
-    socket = new WebSocket('ws://localhost:8000/ws/polData/');
+    socket = new WebSocket('ws://localhost:8000/ws/graph/');
 
     var websocketList = [];
 
@@ -29,19 +29,21 @@
     alert('connection established');
     };
 
+    console.log("BAdo Message")
+    
     socket.onmessage = function(e){
-        
-    var recData=JSON.parse(e.data);
-    dataObjNew=dataObj['data']['datasets'][0]['data'];
-    dataObjNew.shift();
-    dataObjNew.push(recData.value["temp"]);
-    dataObj['data']['datasets'][0]['data']=dataObjNew;
-    window.myLine.update();
+        console.log(e.data);
 
+        var recData=JSON.parse(e.data);
+        dataObjNew=dataObj['data']['datasets'][0]['data'];
+        dataObjNew.shift();
+        dataObjNew.push(recData.value);
+        dataObj['data']['datasets'][0]['data']=dataObjNew;
+        window.myLine.update();
     };
 
-
     socket.onclose = function(e){
+    alert('connection closed');
     };
 </script>
 
@@ -68,6 +70,6 @@
       }
   }
   var ctx = document.getElementById('myChart').getContext('2d');
-  window.myLine = new Chart(ctx,dataObj );
+  window.myLine = new Chart(ctx, dataObj);
 </script>
 {% endblock %}

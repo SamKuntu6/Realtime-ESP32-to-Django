@@ -10,8 +10,6 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>IBMS</title>
-
     <!-- Custom fonts for this template-->
     <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
     <link
@@ -96,15 +94,15 @@
             </li>
 
             <!-- Divider -->
-            <!-- <hr class="sidebar-divider"> -->
+            <hr class="sidebar-divider">
 
             <!-- Heading -->
-            <!-- <div class="sidebar-heading">
+            <div class="sidebar-heading">
                Bridge Parameters
-            </div> -->
+            </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage"
                     aria-expanded="true" aria-controls="collapsePage">
                     <i class="fas fa-fw fa-folder"></i>
@@ -113,7 +111,7 @@
                 <div id="collapsePage" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="#">Carbonation</a>
-                        <a class="collapse-item" href="#">Deflection</a>
+                        <a class="collapse-item" href="{% url 'data:dec_dif' %}">Deflection</a>
                         <a class="collapse-item" href="#">Surface</a>
                         <a class="collapse-item" href="#">stress</a>
                     </div>
@@ -148,19 +146,19 @@
                         <a class="collapse-item" href="#">carbonation</a>
                     </div>
                 </div>
-            </li> -->
+            </li> 
 
-            <!-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>bearings</span></a> 
-            </li> -->
+                <span>bearings</span></a> 
+            </li>
 
 
             <!-- Divider -->
-            <!-- <hr class="sidebar-divider d-none d-md-block"> -->
+            <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- <div class="sidebar-heading">
+            <div class="sidebar-heading">
                 Water Way Parameters
              </div>
 
@@ -174,7 +172,7 @@
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Erosion Activity</span></a>
-            </li> -->
+            </li>
 
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -183,25 +181,25 @@
              </div>
 
              <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{% url 'data:d_report' %}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Daily report</span></a>
             </li>
 
              <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{% url 'data:w_report' %}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Weekly report</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{% url 'data:m_report' %}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Monthly report</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{% url 'data:y_report' %}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Annual report</span></a>
             </li>
@@ -225,9 +223,9 @@
                      <span>download</span></a>
              </li>
             <!-- Sidebar Toggler (Sidebar) -->
-            <!-- <div class="text-center d-none d-md-inline">
+            <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div> -->
+            </div>
 
         </ul>
         <!-- End of Sidebar -->
@@ -351,7 +349,6 @@
                 </div>
             </footer>
             <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
 

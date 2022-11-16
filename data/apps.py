@@ -6,5 +6,7 @@ class DataConfig(AppConfig):
     name = 'data'
 
     def ready(self):
-        from jobs import updater
+        print("sending data...")
+        from .data_scheduler import updater
         updater.start()
+
