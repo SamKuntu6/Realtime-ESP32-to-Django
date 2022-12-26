@@ -7,7 +7,7 @@
 
 {% block content %}
 
-    <h3 style = "color:black;text-align:center;">RealTime Displacement Data</h3>
+    <h3 style = "color:black;text-align:center;">RealTime Temperature Data</h3>
 
     <div style="max-width: 900px; max-height: 400px; text-align:center;">
         <canvas id="myChart" width="900" height="400"></canvas>
@@ -21,40 +21,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.js"></script>
 
 <script>
-    socket = new WebSocket('ws://localhost:8000/ws/graph/');
-
-    var websocketList = [];
-
-    socket.onopen= function(e){
-    alert('connection established');
-    };
-
-    console.log("BAdo Message")
-    
-    socket.onmessage = function(e){
-        console.log(e.data);
-
-        var recData=JSON.parse(e.data);
-        dataObjNew=dataObj['data']['datasets'][0]['data'];
-        dataObjNew.shift();
-        dataObjNew.push(recData.value);
-        dataObj['data']['datasets'][0]['data']=dataObjNew;
-        window.myLine.update();
-    };
-
-    socket.onclose = function(e){
-    alert('connection closed');
-    };
-</script>
-
-<script>
     var dataObj={
       type: 'line',
       data: {
           labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
           datasets: [{
               label: 'Real time data',
-              data: [12, 19, 3, 5, 2, 3, 4, 5, 6, 2, 9, 2, 6, 3, 5],
+              data: [24.5, 25.7, 26.5, 25.4, 27.2, 28.3, 27.5, 25, 26.8, 29.5, 31.2, 28, 26.3, 24.7, 25],
               borderColor: "midnightblue",
               fill: false
           }]
@@ -68,7 +41,7 @@
               }]
           }
       }
-  }
+    }
   var ctx = document.getElementById('myChart').getContext('2d');
   window.myLine = new Chart(ctx, dataObj);
 </script>

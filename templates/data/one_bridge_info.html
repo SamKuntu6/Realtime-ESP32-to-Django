@@ -1,0 +1,78 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extend_head %}
+    <title>IBMS Bridge Information</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+
+  {% if messages %}
+  <ul class="messages">
+      {% for msg in messages %}
+        <li{% if msg.tags %} class="alert alert-info"{% endif %}>{{ msg }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+    <div class="col-8 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">XYZ Bridge Information</h4>
+            <!-- <a style="margin-left: 90%; margin-top: -10%" type="submit" class="btn btn-outline-secondary">Home</a> -->
+            <br>
+            <form class="forms-sample" method="POST">
+              {% csrf_token %}
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Bridge Name</label>
+                <input type="text" class="form-control col-sm-9" placeholder="XYZ Bridge" value="{{q_data.name}}" name="name_bridge" required>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Bridge Type</label>
+                  <select class="form-control col-sm-9" name="bridge_type">
+                    <option>{{ q_data.bridge_type }}</option>
+                    <option value="RC Single Span Bridge">RC Single Span Bridge</option>
+                    <option value="Double Span Bridge">Double Span Bridge</option>
+                    <option value="Triple Span Bridge">Triple Span Bridge</option>
+                  </select>
+                </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Number of Lanes</label>
+                <input type="number" class="form-control col-sm-9" value="{{ q_data.lanes_number }}" name="no_of_lanes" required>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Lane Width (M)</label>
+                <input type="number" class="form-control col-sm-9" value="{{ q_data.lane_width }}" name="laneWidth" required>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Pedestrian Lane Width</label>
+                <input type="number" class="form-control col-sm-9" value="{{ q_data.ped_lane_width }}" name="pedestrianlane" required>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Effective Span</label>
+                <input type="number" class="form-control col-sm-9" value="{{ q_data.effective_span }}" name="effectivespan" required>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Maximum Service Deflection (mm)</label>
+                <input type="number" class="form-control col-sm-8" value="{{ q_data.max_sema_deflection }}" name="max_sema_dif" required> 
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Bridge Location</label>
+                <input type="text" class="form-control col-sm-9" value="{{ q_data.location }}" name="location" placeholder="Eg: Dar-es-Salaam, Kigamboni" required>
+              </div>
+              <div style="padding-left: 75%;">
+                <button class="btn btn-outline-danger">Cancel</button>
+                <button type="submit" class="btn btn-primary mr-2">Save Info</button>
+              </div> 
+            </form>
+          </div>
+        </div>
+      </div>
+{% endblock content %}
+
+{% block extend_footer %}
+
+
+
+{% endblock %}

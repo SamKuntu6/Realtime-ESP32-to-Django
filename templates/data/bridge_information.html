@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extend_head %}
+    <title>IBMS Strain</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+{% endblock %}
+
+{% block content %}
+
+  {% if messages %}
+  <ul class="messages">
+      {% for msg in messages %}
+        <li{% if msg.tags %} class="alert alert-info"{% endif %}>{{ msg }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+    <div class="col-5 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><span style="color: rgb(255, 0, 0); font-size: large; ">Back to</span></h4>
+            <!-- <button style="margin-left: 85%; margin-top: -10%" type="submit" class="btn btn-outline-secondary">Load Data</button>-->
+            <br> 
+            <form class="forms-sample">
+              <h5>Select Different Bridge / Make Update</h5>
+              <div style="padding-left: 25%;">
+                <a href="{% url 'data:indexpage' %}" type="button" class="btn btn-primary">Bridges</a>
+                <a href="{% url 'data:one_bridge_info' 1 %}" type="button" class="btn btn-success mr-2">Update</a>
+              </div> 
+            </form>
+          </div>
+        </div>
+      </div>
+{% endblock content %}
+
+{% block extend_footer %}
+
+
+
+{% endblock %}
